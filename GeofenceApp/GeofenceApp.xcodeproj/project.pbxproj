@@ -22,6 +22,10 @@
 		46E227A62B2752B3003B398B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A52B2752B3003B398B /* UIView.swift */; };
 		46E227AB2B275873003B398B /* GeofenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A82B275873003B398B /* GeofenceManager.swift */; };
 		46E227AC2B275873003B398B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A92B275873003B398B /* LocationManager.swift */; };
+		46E227AF2B276B5D003B398B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227AE2B276B5D003B398B /* DatabaseManager.swift */; };
+		46E227B72B276C22003B398B /* GeofenceData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227B52B276C22003B398B /* GeofenceData+CoreDataClass.swift */; };
+		46E227B82B276C22003B398B /* GeofenceData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227B62B276C22003B398B /* GeofenceData+CoreDataProperties.swift */; };
+		46E227BB2B276C60003B398B /* GeofenceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227BA2B276C60003B398B /* GeofenceStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		46E227A52B2752B3003B398B /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		46E227A82B275873003B398B /* GeofenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeofenceManager.swift; sourceTree = "<group>"; };
 		46E227A92B275873003B398B /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		46E227AE2B276B5D003B398B /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		46E227B52B276C22003B398B /* GeofenceData+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GeofenceData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		46E227B62B276C22003B398B /* GeofenceData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GeofenceData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		46E227BA2B276C60003B398B /* GeofenceStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeofenceStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,8 @@
 		46E2276B2B274BEE003B398B /* GeofenceApp */ = {
 			isa = PBXGroup;
 			children = (
+				46E227B92B276C60003B398B /* Model */,
+				46E227B42B276C22003B398B /* CoreData */,
 				46E227A72B275873003B398B /* Utils */,
 				46E227A42B2752B3003B398B /* Extensions */,
 				46E2279F2B2752A5003B398B /* Views */,
@@ -165,8 +175,26 @@
 			children = (
 				46E227A82B275873003B398B /* GeofenceManager.swift */,
 				46E227A92B275873003B398B /* LocationManager.swift */,
+				46E227AE2B276B5D003B398B /* DatabaseManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		46E227B42B276C22003B398B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				46E227B52B276C22003B398B /* GeofenceData+CoreDataClass.swift */,
+				46E227B62B276C22003B398B /* GeofenceData+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		46E227B92B276C60003B398B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				46E227BA2B276C60003B398B /* GeofenceStruct.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,13 +330,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				46E227712B274BEE003B398B /* ViewController.swift in Sources */,
+				46E227B82B276C22003B398B /* GeofenceData+CoreDataProperties.swift in Sources */,
 				46E227772B274BEE003B398B /* GeofenceApp.xcdatamodeld in Sources */,
 				46E2276D2B274BEE003B398B /* AppDelegate.swift in Sources */,
+				46E227BB2B276C60003B398B /* GeofenceStruct.swift in Sources */,
 				46E227AB2B275873003B398B /* GeofenceManager.swift in Sources */,
+				46E227B72B276C22003B398B /* GeofenceData+CoreDataClass.swift in Sources */,
 				46E227AC2B275873003B398B /* LocationManager.swift in Sources */,
 				46E227A32B2752A5003B398B /* PromptView.swift in Sources */,
 				46E227A62B2752B3003B398B /* UIView.swift in Sources */,
 				46E2276F2B274BEE003B398B /* SceneDelegate.swift in Sources */,
+				46E227AF2B276B5D003B398B /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +519,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GeofenceApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App needs to access to your device location to send you alerts for geofence area.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App needs to access to your device location to send you alerts for geofence area.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -514,6 +548,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GeofenceApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App needs to access to your device location to send you alerts for geofence area.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App needs to access to your device location to send you alerts for geofence area.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

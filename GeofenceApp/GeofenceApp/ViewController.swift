@@ -29,6 +29,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         LocationManager.instance.loadLocationManager()
+        DataBaseHelper.shared.loadDB()
         setupMapView()
         setupSubviews()
     }
@@ -121,7 +122,7 @@ extension ViewController {
     @IBAction func actionOnCenterGeofenceArea(_ sender: Any) {
         guard let centerCoordinate = geofenceLocation else { return }
         // Set the region to include the circle
-        let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: FileConstant.circleRadius * 2, longitudinalMeters: FileConstant.circleRadius * 2)
+        let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: FileConstant.circleRadius * 4, longitudinalMeters: FileConstant.circleRadius * 4)
         mapview.setRegion(region, animated: true)
     }
 }

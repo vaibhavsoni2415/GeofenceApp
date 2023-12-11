@@ -44,13 +44,25 @@ class GeofenceManager {
     
 }
 
+//MARK: - Callbacks from Location manager on geofencing methods
 extension GeofenceManager {
     
     func didEnterRegion(region: CLRegion){
-        debugPrint(#function)
+        guard let geofenceRegion = geofenceRegion else{return}
+        DataBaseHelper.shared.saveGeofenceData(geofenceData: GeofenceStruct.init(identifier: region.identifier,
+                                                                                   latitude: geofenceRegion.center.latitude,
+                                                                                   longitude: geofenceRegion.center.longitude,
+                                                                                   timestamp: Date.init().timeIntervalSince1970,
+                                                                                   entered: true))
+
     }
     
     func didExitRegion(region: CLRegion){
-        debugPrint(#function)
+        guard let geofenceRegion = geofenceRegion else{return}
+        DataBaseHelper.shared.saveGeofenceData(geofenceData: GeofenceStruct.init(identifier: region.identifier,
+                                                                                   latitude: geofenceRegion.center.latitude,
+                                                                                   longitude: geofenceRegion.center.longitude,
+                                                                                   timestamp: Date.init().timeIntervalSince1970,
+                                                                                   entered: false))
     }
 }
