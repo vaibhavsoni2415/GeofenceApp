@@ -20,6 +20,8 @@
 		46E227A22B2752A5003B398B /* PromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E227A02B2752A5003B398B /* PromptView.xib */; };
 		46E227A32B2752A5003B398B /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A12B2752A5003B398B /* PromptView.swift */; };
 		46E227A62B2752B3003B398B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A52B2752B3003B398B /* UIView.swift */; };
+		46E227AB2B275873003B398B /* GeofenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A82B275873003B398B /* GeofenceManager.swift */; };
+		46E227AC2B275873003B398B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A92B275873003B398B /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		46E227A02B2752A5003B398B /* PromptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptView.xib; sourceTree = "<group>"; };
 		46E227A12B2752A5003B398B /* PromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
 		46E227A52B2752B3003B398B /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		46E227A82B275873003B398B /* GeofenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeofenceManager.swift; sourceTree = "<group>"; };
+		46E227A92B275873003B398B /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		46E2276B2B274BEE003B398B /* GeofenceApp */ = {
 			isa = PBXGroup;
 			children = (
+				46E227A72B275873003B398B /* Utils */,
 				46E227A42B2752B3003B398B /* Extensions */,
 				46E2279F2B2752A5003B398B /* Views */,
 				46E2276C2B274BEE003B398B /* AppDelegate.swift */,
@@ -153,6 +158,15 @@
 				46E227A52B2752B3003B398B /* UIView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		46E227A72B275873003B398B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				46E227A82B275873003B398B /* GeofenceManager.swift */,
+				46E227A92B275873003B398B /* LocationManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +304,8 @@
 				46E227712B274BEE003B398B /* ViewController.swift in Sources */,
 				46E227772B274BEE003B398B /* GeofenceApp.xcdatamodeld in Sources */,
 				46E2276D2B274BEE003B398B /* AppDelegate.swift in Sources */,
+				46E227AB2B275873003B398B /* GeofenceManager.swift in Sources */,
+				46E227AC2B275873003B398B /* LocationManager.swift in Sources */,
 				46E227A32B2752A5003B398B /* PromptView.swift in Sources */,
 				46E227A62B2752B3003B398B /* UIView.swift in Sources */,
 				46E2276F2B274BEE003B398B /* SceneDelegate.swift in Sources */,

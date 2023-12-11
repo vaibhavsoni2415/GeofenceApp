@@ -28,6 +28,7 @@ final class ViewController: UIViewController {
     //MARK: - UIView lifecyle methods.
     override func viewDidLoad() {
         super.viewDidLoad()
+        LocationManager.instance.loadLocationManager()
         setupMapView()
         setupSubviews()
     }
@@ -86,6 +87,10 @@ fileprivate extension ViewController {
         // Add the circle overlay to the map
         mapview.addOverlay(geofenceCircle)
         self.geofenceCircle = geofenceCircle
+        
+        // Setup geofence region and monitor for enter and exit events.
+        GeofenceManager.shared.setupAndMonitorGeofence(on: centerCoordinate, with: FileConstant.circleRadius)
+
     }
 }
 
