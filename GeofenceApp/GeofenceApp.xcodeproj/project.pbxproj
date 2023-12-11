@@ -17,6 +17,9 @@
 		46E227872B274BF2003B398B /* GeofenceAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227862B274BF2003B398B /* GeofenceAppTests.swift */; };
 		46E227912B274BF2003B398B /* GeofenceAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227902B274BF2003B398B /* GeofenceAppUITests.swift */; };
 		46E227932B274BF2003B398B /* GeofenceAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227922B274BF2003B398B /* GeofenceAppUITestsLaunchTests.swift */; };
+		46E227A22B2752A5003B398B /* PromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46E227A02B2752A5003B398B /* PromptView.xib */; };
+		46E227A32B2752A5003B398B /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A12B2752A5003B398B /* PromptView.swift */; };
+		46E227A62B2752B3003B398B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E227A52B2752B3003B398B /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		46E2278C2B274BF2003B398B /* GeofenceAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeofenceAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46E227902B274BF2003B398B /* GeofenceAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceAppUITests.swift; sourceTree = "<group>"; };
 		46E227922B274BF2003B398B /* GeofenceAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		46E227A02B2752A5003B398B /* PromptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptView.xib; sourceTree = "<group>"; };
+		46E227A12B2752A5003B398B /* PromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
+		46E227A52B2752B3003B398B /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,8 @@
 		46E2276B2B274BEE003B398B /* GeofenceApp */ = {
 			isa = PBXGroup;
 			children = (
+				46E227A42B2752B3003B398B /* Extensions */,
+				46E2279F2B2752A5003B398B /* Views */,
 				46E2276C2B274BEE003B398B /* AppDelegate.swift */,
 				46E2276E2B274BEE003B398B /* SceneDelegate.swift */,
 				46E227702B274BEE003B398B /* ViewController.swift */,
@@ -128,6 +136,23 @@
 				46E227922B274BF2003B398B /* GeofenceAppUITestsLaunchTests.swift */,
 			);
 			path = GeofenceAppUITests;
+			sourceTree = "<group>";
+		};
+		46E2279F2B2752A5003B398B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				46E227A12B2752A5003B398B /* PromptView.swift */,
+				46E227A02B2752A5003B398B /* PromptView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		46E227A42B2752B3003B398B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				46E227A52B2752B3003B398B /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E227A22B2752A5003B398B /* PromptView.xib in Resources */,
 				46E2277C2B274BF2003B398B /* LaunchScreen.storyboard in Resources */,
 				46E227792B274BF2003B398B /* Assets.xcassets in Resources */,
 				46E227742B274BEE003B398B /* Main.storyboard in Resources */,
@@ -264,6 +290,8 @@
 				46E227712B274BEE003B398B /* ViewController.swift in Sources */,
 				46E227772B274BEE003B398B /* GeofenceApp.xcdatamodeld in Sources */,
 				46E2276D2B274BEE003B398B /* AppDelegate.swift in Sources */,
+				46E227A32B2752A5003B398B /* PromptView.swift in Sources */,
+				46E227A62B2752B3003B398B /* UIView.swift in Sources */,
 				46E2276F2B274BEE003B398B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
