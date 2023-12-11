@@ -30,6 +30,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         LocationManager.instance.loadLocationManager()
         DataBaseHelper.shared.loadDB()
+        addListnerOnCallbackMethods()
         setupMapView()
         setupSubviews()
     }
@@ -112,6 +113,9 @@ extension ViewController {
             debugPrint("Marker Center Coordinates - Lat: \(coordinate.latitude), Lon: \(coordinate.longitude)")
             geofenceLocation = coordinate
             loadGeofenceAreaOnMap()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                self.setCenterOnGeofenceArea()
+            })
         } else {
             markerView.isHidden = false
             navigationItemState = .done
@@ -120,10 +124,7 @@ extension ViewController {
 
     /// Handles the action when the "Center Geofence Area" button is pressed.
     @IBAction func actionOnCenterGeofenceArea(_ sender: Any) {
-        guard let centerCoordinate = geofenceLocation else { return }
-        // Set the region to include the circle
-        let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: FileConstant.circleRadius * 4, longitudinalMeters: FileConstant.circleRadius * 4)
-        mapview.setRegion(region, animated: true)
+        setCenterOnGeofenceArea()
     }
 }
 
@@ -140,11 +141,11 @@ fileprivate extension ViewController {
         promptView.message = message
         promptView.tag = 11
         promptView.alpha = 0
-        promptView.frame = CGRect(x: 20, y: -100, width: UIScreen.main.bounds.width - 40, height: 100)
+        promptView.frame = CGRect(x: 20, y: -120, width: UIScreen.main.bounds.width - 40, height: 100)
         view.addSubview(promptView)
         UIView.animate(withDuration: 0.5) {
             promptView.alpha = 1
-            promptView.frame = CGRect(x: 20, y: 80, width: UIScreen.main.bounds.width - 40, height: 100)
+            promptView.frame = CGRect(x: 20, y: 100, width: UIScreen.main.bounds.width - 40, height: 100)
         } completion: { finished in
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
                 self?.removePrompt()
@@ -157,11 +158,27 @@ fileprivate extension ViewController {
         if let view = view.viewWithTag(11) {
             UIView.animate(withDuration: 0.3) {
                 view.alpha = 0
-                view.frame = CGRect(x: 20, y: -100, width: UIScreen.main.bounds.width - 40, height: 100)
+                view.frame = CGRect(x: 20, y: -120, width: UIScreen.main.bounds.width - 40, height: 100)
             } completion: { finished in
                 view.removeFromSuperview()
             }
         }
+    }
+    
+    func addListnerOnCallbackMethods(){
+        GeofenceManager.shared.didEnterGeofenceRegion = {
+            self.showPrompt(message: FileConstant.enterGeofenceRegionMessage)
+        }
+        GeofenceManager.shared.didExitGeofenceRegion = {
+            self.showPrompt(message: FileConstant.exitGeofenceRegionMessage)
+        }
+    }
+    
+    func setCenterOnGeofenceArea(){
+        guard let centerCoordinate = geofenceLocation else { return }
+        // Set the region to include the circle
+        let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: FileConstant.circleRadius * 4, longitudinalMeters: FileConstant.circleRadius * 4)
+        mapview.setRegion(region, animated: true)
     }
 }
 
@@ -192,6 +209,8 @@ extension ViewController {
     
     struct FileConstant {
         static let addGeofenceMessage = "Adjust the map below marker to set the geofence center location."
+        static let enterGeofenceRegionMessage = "you have entered in geofence region."
+        static let exitGeofenceRegionMessage = "you have exited the geofence region."
         static let circleRadius: CLLocationDistance = 200
     }
 }

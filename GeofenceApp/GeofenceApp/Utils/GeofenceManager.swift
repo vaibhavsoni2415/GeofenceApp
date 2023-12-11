@@ -12,6 +12,9 @@ class GeofenceManager {
     
     static let shared = GeofenceManager.init()
     
+    var didEnterGeofenceRegion: (() -> Void?)?
+    var didExitGeofenceRegion: (() -> Void?)?
+
     var geofenceRegion: CLCircularRegion?
 
     /// Sets up and monitors a geofence with the specified location and radius.
@@ -49,6 +52,7 @@ extension GeofenceManager {
     
     func didEnterRegion(region: CLRegion){
         guard let geofenceRegion = geofenceRegion else{return}
+        didEnterGeofenceRegion?()
         DataBaseHelper.shared.saveGeofenceData(geofenceData: GeofenceStruct.init(identifier: region.identifier,
                                                                                    latitude: geofenceRegion.center.latitude,
                                                                                    longitude: geofenceRegion.center.longitude,
@@ -59,6 +63,7 @@ extension GeofenceManager {
     
     func didExitRegion(region: CLRegion){
         guard let geofenceRegion = geofenceRegion else{return}
+        didExitGeofenceRegion?()
         DataBaseHelper.shared.saveGeofenceData(geofenceData: GeofenceStruct.init(identifier: region.identifier,
                                                                                    latitude: geofenceRegion.center.latitude,
                                                                                    longitude: geofenceRegion.center.longitude,
